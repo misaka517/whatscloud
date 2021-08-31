@@ -12,6 +12,13 @@ spring:
     password: 1705020111
 
 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.misaka.springcloud.entities
