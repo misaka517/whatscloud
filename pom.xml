@@ -12,6 +12,9 @@
       <module>order80</module>
     <module>cloud-api-commons</module>
     <module>cloud-eureka-server-7001</module>
+      <module>cloud-provider-payment8002</module>
+      <module>cloud-provider-payment8002</module>
+      <module>cloud-concert-zookeeper</module>
   </modules>
   <packaging>pom</packaging>
 
