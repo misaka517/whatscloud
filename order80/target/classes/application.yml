@@ -4,10 +4,16 @@ server:
 spring:
   application:
     name: order80
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:7001/eureka
+  cloud:
+    zookeeper:
+      connect-string: node10:2181,node11:2181,node12:2181
+      discovery:
+        register: true
+        enabled: true
+        instance-id: 1
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:7001/eureka

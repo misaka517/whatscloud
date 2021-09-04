@@ -3,11 +3,10 @@ package com.misaka.springcloud.Controller;
 import com.misaka.springcloud.entities.CommonResult;
 import com.misaka.springcloud.entities.Payment;
 import com.misaka.springcloud.service.PaymentService;
-import com.netflix.discovery.DiscoveryClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

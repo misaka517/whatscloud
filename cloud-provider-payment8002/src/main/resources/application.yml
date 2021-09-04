@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: cloud-payment-service
+  cloud:
+    zookeeper:
+      connect-string: node10:2181,node11:2181,node12:2181
+      discovery:
+        register: true
+        enabled: true
+        instance-id: 2
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
@@ -12,14 +19,14 @@ spring:
     password: 1705020111
 
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:7001/eureka
-  instance:
-    instance-id: payment8002
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:7001/eureka
+#  instance:
+#    instance-id: payment8002
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
