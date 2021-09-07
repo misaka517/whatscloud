@@ -1,0 +1,13 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: cloud-provider-hystrix-payment
+  cloud:
+    zookeeper:
+      connect-string: node10:2181,node11:2181,node12:2181
+      discovery:
+        register: true
+        enabled: true
+        instance-id: 1
