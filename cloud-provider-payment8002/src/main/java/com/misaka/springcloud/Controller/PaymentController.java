@@ -6,7 +6,6 @@ import com.misaka.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -37,7 +36,7 @@ public class PaymentController {
     };
 
     @GetMapping(value = "/payment/get/{id}")
-    public CommonResult getPaymentById(@PathVariable("id") Long id){
+    public CommonResult getPaymentById(@PathVariable("id") Long id) throws InterruptedException {
         Payment payment = paymentService.getPaymentById(id);
         log.info("---查询结果：{}" ,payment);
         if(null != payment){
@@ -46,6 +45,11 @@ public class PaymentController {
         else {
             return new CommonResult(444,"查询失败",null);
         }
-    };
+    }
+
+    @GetMapping(value = "/payment/getHystrix/{id}")
+    public String getTest(@PathVariable Integer id){
+        return paymentService.HystrixTest(id);
+    }
 
 }
