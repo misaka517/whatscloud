@@ -1,0 +1,31 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-payment-service
+  cloud:
+#    zookeeper:
+#      connect-string: node10:2181,node11:2181,node12:2181
+#      discovery:
+#        register: true
+#        enabled: true
+#        instance-id: 2
+    gateway:
+#   服务名获取
+#      discovery:
+#        locator:
+#          enabled: true
+      routes:
+        - id: payment_route1
+          uri: https://www.bilibili.com/
+          predicates:
+            - Path=/payment/get/**
+        - id: payment_route1
+          uri: http://localhost:8001
+          predicates:
+              - Path=/payment/get/**
+
+feign:
+  hystrix:
+    enable: true

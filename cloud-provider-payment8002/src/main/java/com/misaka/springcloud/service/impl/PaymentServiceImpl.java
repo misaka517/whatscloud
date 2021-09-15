@@ -37,6 +37,7 @@ public class PaymentServiceImpl implements PaymentService {
     @HystrixCommand(fallbackMethod = "fallBackVoid",commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
     })
+
     public String HystrixTest(Integer id){
         try {
             TimeUnit.SECONDS.sleep(5000);
