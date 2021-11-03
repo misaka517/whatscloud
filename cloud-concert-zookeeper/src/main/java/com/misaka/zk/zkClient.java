@@ -18,15 +18,18 @@ public class zkClient {
     ZooKeeper zookeeper;
     @Before
     public void init() throws IOException {
-        zookeeper = new ZooKeeper(connectString, sessionTimeout, new Watcher() {
-            @lombok.SneakyThrows
-            @Override
-            public void process(WatchedEvent watchedEvent) {
-                List<String> children = zookeeper.getChildren("/servers", true);
-                for (String node :
-                        children) {
-                    System.out.println(node);
-                }
+        zookeeper = new ZooKeeper(connectString, sessionTimeout, watchedEvent -> {
+            List<String> children = null;
+            try {
+                children = zookeeper.getChildren("/servers", true);
+            } catch (KeeperException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            for (String node :
+                    children) {
+                System.out.println(node);
             }
         });
     }
